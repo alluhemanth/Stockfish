@@ -38,7 +38,11 @@ namespace Stockfish::Eval::NNUE {
 using FeatureSet = Features::HalfKAv2_hm;
 
 // Number of input feature dimensions after conversion
-constexpr IndexType TransformedFeatureDimensionsBig = 3072;
+#ifdef ENGINE_LITE
+    constexpr IndexType TransformedFeatureDimensionsBig = 256;
+#else
+    constexpr IndexType TransformedFeatureDimensionsBig = 3072;
+#endif
 constexpr int       L2Big                           = 15;
 constexpr int       L3Big                           = 32;
 
